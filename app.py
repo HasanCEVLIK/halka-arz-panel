@@ -4,12 +4,12 @@ from datetime import datetime
 st.set_page_config(page_title="Panel", layout="wide")
 st.title("📈 Halka Arz • 💰 Fon • 📊 BIST")
 
-cfg_path = r"C:\halka_arz\config.json"
+# CLOUD UYUMLU
+cfg_path = "config.json"
 cfg = json.load(open(cfg_path, encoding="utf-8"))
 halka = pd.DataFrame(cfg.get("halka_arz_liste", []))
 fon = pd.DataFrame(cfg.get("fon_liste", []))
 
-# HATA DÜZELTİLDİ
 mtime = os.path.getmtime(cfg_path)
 st.caption(f"Son güncelleme: {datetime.fromtimestamp(mtime).strftime('%d.%m %H:%M')}")
 
