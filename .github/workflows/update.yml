@@ -1,1 +1,63 @@
+name: Günlük Panel Güncelleme
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # 09:00 TR (UTC+3)
+    - cron: '0 15 * * *'  # 18:00 TR
+  workflow_dispatch:     # manuel tetikleme
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Python kur
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Verileri çek
+        run: |
+          python - << 'PY'
+          import json, datetime, random
+          from datetime import timezone, timedelta
+          
+          tr = timezone(timedelta(hours=3))
+          now = datetime.datetime.now(tr).isoformat()
+          
+          # ÖRNEK VERİ - gerçek API'ler bağlanacak
+          config = {
+            "updated": now,
+            "halka_arz": [
+              {"sirket": "Beta Enerji", "tarih": "17-19 Haziran", "fiyat": "45.00 TL", "durum": "3 gün kaldı"},
+              {"sirket": "Omega Gıda", "tarih": "24-26 Haziran", "fiyat": "32.00 TL", "durum": "Yakında"},
+              {"sirket": "Tavuk Dünyası", "tarih": "Temmuz", "fiyat": "-", "durum": "SPK onayında"}
+            ],
+            "fonlar": [
+              {"kod": "TTE", "gunluk": round(random.uniform(0.5,1.5),2), "aylik": 5.4},
+              {"kod": "YAY", "gunluk": round(random.uniform(-0.5,0.5),2), "aylik": 3.1},
+              {"kod": "AFT", "gunluk": round(random.uniform(0.3,1.0),2), "aylik": 4.2},
+              {"kod": "MAC", "gunluk": round(random.uniform(0.2,0.8),2), "aylik": 2.9}
+            ],
+            "bist": [
+              {"hisse": "THYAO", "fiyat": 312.5, "degisim": 1.2},
+              {"hisse": "ASELS", "fiyat": 58.3, "degisim": 0.8},
+              {"hisse": "TUPRS", "fiyat": 145.2, "degisim": -0.5},
+              {"hisse": "EREGL", "fiyat": 48.9, "degisim": 2.1}
+            ]
+          }
+          
+          with open('config.json','w',encoding='utf-8') as f:
+              json.dump(config,f,ensure_ascii=False,indent=2)
+          print("config.json güncellendi")
+          PY
+      
+      - name: Commit et
+        run: |
+          git config user.name "panel-bot"
+          git config user.email "bot@panel.local"
+          git add config.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Otomatik güncelleme: $(date +'%d.%m %H:%M')"
+          git push
 
