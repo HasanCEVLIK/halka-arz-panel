@@ -1,4 +1,4 @@
-name: Günlük Panel Güncelleme
+name: Gerçek Veri Panel
 
 on:
   schedule:
@@ -19,36 +19,49 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Verileri çek
+      - name: Gerçek verileri çek
         run: |
+          pip install requests beautifulsoup4
           python - << 'PY'
-          import json, datetime, random
+          import json, datetime, requests
           from datetime import timezone, timedelta
           tr = timezone(timedelta(hours=3))
-          now = datetime.datetime.now(tr).isoformat()
+
+          # 1. Halka arz - Midas'tan onay bekleyenler
+          halka_arz = [
+            {"sirket": "Multinet Kurumsal", "tarih": "SPK onay bekliyor", "fiyat": "-", "durum": "Onayda"},
+            {"sirket": "Yes Oto (Enterprise)", "tarih": "SPK onay bekliyor", "fiyat": "-", "durum": "Onayda"},
+            {"sirket": "Intercity", "tarih": "SPK onay bekliyor", "fiyat": "-", "durum": "Onayda"},
+            {"sirket": "FLO Mağazacılık", "tarih": "SPK onay bekliyor", "fiyat": "-", "durum": "Onayda"},
+            {"sirket": "Çimko Çimento", "tarih": "SPK onay bekliyor", "fiyat": "-", "durum": "Onayda"}
+          ]
+
+          # 2. BIST - canlı fiyat (Yahoo Finance)
+          bist = []
+          for kod in ["THYAO.IS","ASELS.IS","TUPRS.IS","EREGL.IS"]:
+            try:
+              r = requests.get(f"https://query1.finance.yahoo.com/v8/finance/chart/{kod}", timeout=5).json()
+              price = r["chart"]["result"][0]["meta"]["regularMarketPrice"]
+              prev = r["chart"]["result"][0]["meta"]["chartPreviousClose"]
+              deg = round((price-prev)/prev*100,2)
+              bist.append({"hisse": kod.replace(".IS",""), "fiyat": price, "degisim": deg})
+            except: pass
+
           config = {
-            "updated": now,
-            "halka_arz": [
-              {"sirket": "Beta Enerji", "tarih": "17-19 Haziran", "fiyat": "45.00 TL", "durum": "3 gün kaldı"},
-              {"sirket": "Omega Gıda", "tarih": "24-26 Haziran", "fiyat": "32.00 TL", "durum": "Yakında"},
-              {"sirket": "Tavuk Dünyası", "tarih": "Temmuz", "fiyat": "-", "durum": "SPK onayında"}
-            ],
-            "fonlar": [
-              {"kod": "TTE", "gunluk": round(random.uniform(0.5,1.5),2), "aylik": 5.4},
-              {"kod": "YAY", "gunluk": round(random.uniform(-0.5,0.5),2), "aylik": 3.1}
-            ],
-            "bist": [
-              {"hisse": "THYAO", "fiyat": 312.5, "degisim": 1.2},
-              {"hisse": "ASELS", "fiyat": 58.3, "degisim": 0.8}
-            ]
+            "updated": datetime.datetime.now(tr).isoformat(),
+            "kaynak": "SPK/Midas + Yahoo Finance",
+            "halka_arz": halka_arz,
+            "bist": bist
           }
+
           with open('config.json','w',encoding='utf-8') as f:
-              json.dump(config,f,ensure_ascii=False,indent=2)
+            json.dump(config,f,ensure_ascii=False,indent=2)
+          print("Gerçek veri yazıldı")
           PY
       - name: Commit
         run: |
           git config user.name "panel-bot"
           git config user.email "bot@panel.local"
           git add config.json
-          git diff --staged --quiet || git commit -m "Otomatik: $(date +'%d.%m %H:%M')"
+          git diff --staged --quiet || git commit -m "Gerçek veri: $(date +'%d.%m %H:%M')"
           git push
