@@ -1,0 +1,38 @@
+{
+  "token": "8559029871:AAEVGkUW6WjiS5ODy8XJ0xJHnh0VNg1ormk",
+  "chat_id": "956897366",
+  "halka_arz_liste": [
+    {"Şirket": "Beta Enerji", "Tarih": "17-19 Haz", "Fiyat": "40₺", "Durum": "Talepte"},
+    {"Şirket": "Tavuk Dünyası", "Tarih": "Temmuz", "Fiyat": "-", "Durum": "Onaylı"},
+    {"Şirket": "Kızılay İçecek", "Tarih": "Temmuz", "Fiyat": "-", "Durum": "Onaylı"},
+    {"Şirket": "Destek Finans Faktoring", "Tarih": "İncelemede", "Fiyat": "-", "Durum": "SPK"},
+    {"Şirket": "Altınkılıç Gıda", "Tarih": "İncelemede", "Fiyat": "-", "Durum": "SPK"},
+    {"Şirket": "Mopaş Market", "Tarih": "İncelemede", "Fiyat": "-", "Durum": "SPK"},
+    {"Şirket": "Enda Enerji", "Tarih": "İncelemede", "Fiyat": "-", "Durum": "SPK"},
+    {"Şirket": "DCT Trading", "Tarih": "İncelemede", "Fiyat": "-", "Durum": "SPK"},
+    {"Şirket": "Bahadır Kimya", "Tarih": "İncelemede", "Fiyat": "-", "Durum": "SPK"},
+    {"Şirket": "Yiğit Akü", "Tarih": "Tamamlandı", "Fiyat": "34.68₺", "Durum": "İşlemde"}
+  ],
+  "fon_liste": [
+    {"Kod": "YAY", "Günlük%": 1.24, "Aylık%": 5.2, "Tür": "Hisse"},
+    {"Kod": "AFT", "Günlük%": 1.58, "Aylık%": 6.1, "Tür": "Hisse"},
+    {"Kod": "TTE", "Günlük%": 0.87, "Aylık%": 3.4, "Tür": "Teknoloji"},
+    {"Kod": "IPB", "Günlük%": 1.12, "Aylık%": 4.8, "Tür": "Hisse"},
+    {"Kod": "TI2", "Günlük%": 0.95, "Aylık%": 4.1, "Tür": "Hisse"},
+    {"Kod": "MAC", "Günlük%": 1.05, "Aylık%": 4.5, "Tür": "Karma"},
+    {"Kod": "GMR", "Günlük%": 0.78, "Aylık%": 3.2, "Tür": "Altın"},
+    {"Kod": "YAS", "Günlük%": 1.33, "Aylık%": 5.8, "Tür": "Hisse"},
+    {"Kod": "AK3", "Günlük%": 0.91, "Aylık%": 3.9, "Tür": "Hisse"},
+    {"Kod": "OHB", "Günlük%": 1.18, "Aylık%": 5.0, "Tür": "Hisse"},
+    {"Kod": "TKF", "Günlük%": 0.65, "Aylık%": 2.8, "Tür": "Katılım"},
+    {"Kod": "NNF", "Günlük%": 1.02, "Aylık%": 4.3, "Tür": "Hisse"},
+    {"Kod": "TAU", "Günlük%": 0.88, "Aylık%": 3.7, "Tür": "Hisse"},
+    {"Kod": "ZFB", "Günlük%": 1.27, "Aylık%": 5.4, "Tür": "Hisse"},
+    {"Kod": "IDH", "Günlük%": 0.73, "Aylık%": 3.1, "Tür": "Değişken"},
+    {"Kod": "IID", "Günlük%": 1.15, "Aylık%": 4.9, "Tür": "Hisse"},
+    {"Kod": "GHS", "Günlük%": 0.82, "Aylık%": 3.5, "Tür": "Hisse"},
+    {"Kod": "KYA", "Günlük%": 1.09, "Aylık%": 4.6, "Tür": "Hisse"},
+    {"Kod": "HVS", "Günlük%": 0.94, "Aylık%": 4.0, "Tür": "Hisse"},
+    {"Kod": "AFA", "Günlük%": 1.41, "Aylık%": 6.3, "Tür": "Hisse"}
+  ]
+}
