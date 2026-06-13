@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13T23:13:18.231579+03:00",
+  "updated": "2026-06-13T23:16:23.924917+03:00",
   "halka_arz": [
     {
       "sirket": "Beta Enerji",
@@ -23,23 +23,13 @@
   "fonlar": [
     {
       "kod": "TTE",
-      "gunluk": 0.87,
+      "gunluk": 0.91,
       "aylik": 5.4
     },
     {
       "kod": "YAY",
-      "gunluk": 0.45,
+      "gunluk": -0.48,
       "aylik": 3.1
-    },
-    {
-      "kod": "AFT",
-      "gunluk": 0.62,
-      "aylik": 4.2
-    },
-    {
-      "kod": "MAC",
-      "gunluk": 0.35,
-      "aylik": 2.9
     }
   ],
   "bist": [
@@ -52,16 +42,6 @@
       "hisse": "ASELS",
       "fiyat": 58.3,
       "degisim": 0.8
-    },
-    {
-      "hisse": "TUPRS",
-      "fiyat": 145.2,
-      "degisim": -0.5
-    },
-    {
-      "hisse": "EREGL",
-      "fiyat": 48.9,
-      "degisim": 2.1
     }
   ]
 }
