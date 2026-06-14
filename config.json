@@ -1,37 +1,54 @@
 {
-  "updated": "2026-06-14T19:15:38.575565+03:00",
-  "kaynak": "SPK/Midas + Yahoo Finance",
+  "updated": "2026-06-14T19:26:28.157068+03:00",
+  "kaynak": "SPK + Yahoo + TEFAS",
   "halka_arz": [
     {
       "sirket": "Multinet Kurumsal",
-      "tarih": "SPK onay bekliyor",
+      "tarih": "Onay bekliyor",
       "fiyat": "-",
-      "durum": "Onayda"
+      "durum": "SPK"
     },
     {
       "sirket": "Yes Oto (Enterprise)",
-      "tarih": "SPK onay bekliyor",
+      "tarih": "Onay bekliyor",
       "fiyat": "-",
-      "durum": "Onayda"
+      "durum": "SPK"
     },
     {
       "sirket": "Intercity",
-      "tarih": "SPK onay bekliyor",
+      "tarih": "Onay bekliyor",
       "fiyat": "-",
-      "durum": "Onayda"
+      "durum": "SPK"
     },
     {
       "sirket": "FLO Mağazacılık",
-      "tarih": "SPK onay bekliyor",
+      "tarih": "Onay bekliyor",
       "fiyat": "-",
-      "durum": "Onayda"
+      "durum": "SPK"
     },
     {
-      "sirket": "Çimko Çimento",
-      "tarih": "SPK onay bekliyor",
+      "sirket": "Tavuk Dünyası",
+      "tarih": "Onay bekliyor",
       "fiyat": "-",
-      "durum": "Onayda"
+      "durum": "SPK"
     }
   ],
-  "bist": []
+  "bist": [],
+  "fonlar": [
+    {
+      "kod": "TTE",
+      "gunluk": 0.87,
+      "aylik": 5.4
+    },
+    {
+      "kod": "YAY",
+      "gunluk": 0.32,
+      "aylik": 3.1
+    },
+    {
+      "kod": "AFT",
+      "gunluk": 1.12,
+      "aylik": 6.8
+    }
+  ]
 }
